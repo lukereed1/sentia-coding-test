@@ -1,0 +1,7 @@
+<div class="flex-col">
+  <h1 class="text-5xl">Users</h1>
+  <%= form_with url: import_people_path, method: :post, multipart: true do |form| %>
+    <%= form.file_field :file, accept: ".csv" %>
+    <%= form.submit "Import Users"%>
+  <% end %>
+</div>
