@@ -5,7 +5,14 @@ class Person < ApplicationRecord
   has_and_belongs_to_many :locations, class_name: "Location"
 
   def first_name
-    self[:first_name].capitalize if self[:first_name].present?
+    # Skip capitalisation if name contains nums or -
+    return self[:first_name] if self[:first_name]&.match?(/[\d-]/)
+    self[:first_name]&.capitalize
+  end
+
+  def last_name
+    return self[:last_name] if self[:last_name]&.match?(/[\d-]/)
+    self[:last_name]&.capitalize
   end
 
   def formatted_locations

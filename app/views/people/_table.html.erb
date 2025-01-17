@@ -1,14 +1,14 @@
 <table class="w-full table-fixed rounded-xl overflow-hidden shadow-sm">
   <thead class="bg-gray-100 border border-gray">
     <tr class="divide-x">
-      <th class="p-4">First Name</th>
-      <th class="p-4">Last Name</th>
-      <th class="p-4">Location/s</th>
-      <th class="p-4">Species</th>
-      <th class="p-4">Gender</th>
-      <th class="p-4">Affiliation/s</th>
-      <th class="p-4">Weapon</th>
-      <th class="p-4">Vehicle</th>
+      <th class="p-4"><%= link_to "First Name", people_path(sort: :first_name, direction: params[:direction] == "asc" ? "desc" : "asc")%></th>
+      <th class="p-4"><%= link_to "Last Name", people_path(sort: :last_name, direction: params[:direction] == "asc" ? "desc" : "asc")%></th>
+      <th class="p-4"><%= link_to "Location/s", people_path(sort: :location, direction: params[:direction] == "asc" ? "desc" : "asc")%></th>
+      <th class="p-4"><%= link_to "Species", people_path(sort: :species, direction: params[:direction] == "asc" ? "desc" : "asc")%></th>
+      <th class="p-4"><%= link_to "Gender", people_path(sort: :gender, direction: params[:direction] == "asc" ? "desc" : "asc")%></th>
+      <th class="p-4"><%= link_to "Affiliation/s", people_path(sort: :affiliation, direction: params[:direction] == "asc" ? "desc" : "asc")%></th>
+      <th class="p-4"><%= link_to "Weapon", people_path(sort: :weapon, direction: params[:direction] == "asc" ? "desc" : "asc")%></th>
+      <th class="p-4"><%= link_to "Vehicle", people_path(sort: :vehicle, direction: params[:direction] == "asc" ? "desc" : "asc")%></th>
     </tr>
   </thead>
   <tbody>

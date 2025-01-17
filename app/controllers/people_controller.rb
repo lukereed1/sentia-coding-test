@@ -1,6 +1,18 @@
 class PeopleController < ApplicationController
   def index
     @people = Person.all
+
+    if params[:sort].present?
+      direction = params[:direction] == "asc" ? "desc" : "asc"
+      @people = case params[:sort]
+      when "location"
+        Person.joins(:locations).order("locations.name #{direction}")
+      when "affiliation"
+        Person.joins(:affiliations).order("affiliations.name #{direction}")
+      else
+        Person.order("#{params[:sort]} #{direction}")
+      end
+    end
   end
 
   def import
