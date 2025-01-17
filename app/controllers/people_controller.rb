@@ -26,9 +26,7 @@ class PeopleController < ApplicationController
     require "csv"
     return redirect_to request.referer, alert: "No file uploaded" unless params[:file]
 
-    file = File.open(params[:file])
-
-    CSV.foreach(file, headers: true) do |row|
+    CSV.foreach(params[:file].tempfile, headers: true) do |row|
       next unless row["Affiliations"] # Skips user without an affiliation
       new_person = Person.new
 

@@ -7,10 +7,16 @@
           <span class="sr-only">
             <%= form.file_field :file, 
                 accept: ".csv",
-                onchange: "this.parentElement.previousElementSibling.textContent = this.files[0].name" %>
+                onchange: "handleFileSelect(this)" %>
           </span>
       </label>
     </div>
     <%= form.submit "Import Users", class: "rounded-lg shadow-sm bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white cursor-pointer"%>
   <% end %>
 </div>
+
+<script>
+  function handleFileSelect(input) {
+    input.parentElement.previousElementSibling.textContent = input.files[0].name;
+  }
+</script>

@@ -5,7 +5,7 @@ class Person < ApplicationRecord
   has_and_belongs_to_many :locations, class_name: "Location"
 
   def first_name
-    # Skip capitalisation if name contains nums or -
+    # Skip capitalisation if name contains nums or "-"
     return self[:first_name] if self[:first_name]&.match?(/[\d-]/)
     self[:first_name]&.capitalize
   end
