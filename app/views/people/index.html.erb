@@ -4,4 +4,10 @@
     <%= form.file_field :file, accept: ".csv" %>
     <%= form.submit "Import Users"%>
   <% end %>
+
+  <% if @people.exists? %>
+    <%= render "table" %>
+  <% else %>
+    <h2 class="text-3xl">Import some users...</h2>
+  <% end %>
 </div>

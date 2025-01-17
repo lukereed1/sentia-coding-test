@@ -45,27 +45,29 @@ class PeopleController < ApplicationController
       end
 
       # Other Details
-      new_person.species = normalise(row["Species"])
-      new_person.weapon = normalise(row["Weapon"])
-      new_person.vehicle = normalise(row["Vehicle"])
+      new_person.species = row["Species"]
+      new_person.vehicle = row["Vehicle"]
+      new_person.weapon = row["Weapon"]&.gsub(/[^a-zA-Z0-9\s'-]/, "")
       new_person.gender = parse_gender(row["Gender"])
 
       new_person.save
     end
+
+    redirect_to root_path
   end
 
-  # Converts to lowercase and removes any leading/tailing whitespace or special characters
+  # Converts to lowercase and removes any leading/tailing whitespace
   def normalise(text)
-    text&.downcase&.strip&.gsub(/[^a-zA-Z0-9\s'-]/, "")
+    text&.downcase&.strip
   end
 
   def parse_gender(text)
     if text&.downcase == "m"
-      "male"
+      "Male"
     elsif text&.downcase == "f"
-      "female"
+      "Female"
     else
-      text&.downcase
+      text
     end
   end
 end

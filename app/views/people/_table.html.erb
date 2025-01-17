@@ -1,0 +1,28 @@
+<table class="w-full table-fixed rounded-xl overflow-hidden shadow-sm">
+  <thead class="bg-gray-100 border border-gray">
+    <tr class="divide-x">
+      <th class="p-4">First Name</th>
+      <th class="p-4">Last Name</th>
+      <th class="p-4">Location/s</th>
+      <th class="p-4">Species</th>
+      <th class="p-4">Gender</th>
+      <th class="p-4">Affiliation/s</th>
+      <th class="p-4">Weapon</th>
+      <th class="p-4">Vehicle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @people.each do |person| %>
+      <tr class="divide-y divide-x divide-gray-100 border border-gray-200 overflow-hidden">
+        <td class="p-3 text-center"><%= person.first_name %></td>
+        <td class="p-3 text-center"><%= person.last_name %></td>
+        <td class="p-3 text-center"><%= person.formatted_locations %></td>
+        <td class="p-3 text-center"><%= person.species %></td>
+        <td class="p-3 text-center"><%= person.gender %></td>                    
+        <td class="p-3 text-center"><%= person.formatted_affiliations %></td>
+        <td class="p-3 text-center"><%= person.weapon %></td>
+        <td class="p-3 text-center"><%= person.vehicle %></td>          
+      </tr>
+    <% end %>
+  </tbody>
+</table>
