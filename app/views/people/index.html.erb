@@ -1,13 +1,13 @@
-<div class="container flex flex-col items-center">
-  <h1 class="text-5xl">Users</h1>
-  <%= form_with url: import_people_path, method: :post, multipart: true do |form| %>
-    <%= form.file_field :file, accept: ".csv" %>
-    <%= form.submit "Import Users"%>
-  <% end %>
+<div class="container flex flex-col justify-center">
+  <h1 class="text-6xl text-center mb-5">Users</h1>
+  <div class="flex justify-between items-center mb-5 p-4 border border-gray rounded-lg shadow-sm">
+    <%= render "import" %>
+    <%= render "search" %>
+  </div>
 
   <% if @people.exists? %>
     <%= render "table" %>
   <% else %>
-    <h2 class="text-3xl">Import some users...</h2>
+    <h2 class="text-3xl text-center">Import some users...</h2>
   <% end %>
 </div>

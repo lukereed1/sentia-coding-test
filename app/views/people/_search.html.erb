@@ -1,0 +1,6 @@
+<div>
+  <%= form_with url: people_path, method: :get, class: "flex gap-2 items-center" do |form| %>
+    <%= form.text_field :search, placeholder: "Search by name", class: "px-3 py-2 border border-gray rounded-lg shadow-sm"%>
+    <%= form.submit "Search", class: "rounded-lg shadow-sm border bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white cursor-pointer" %>
+  <% end %>
+</div>

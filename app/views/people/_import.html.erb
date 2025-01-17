@@ -1,0 +1,16 @@
+<div>
+  <%= form_with url: import_people_path, method: :post, multipart: true, class: "flex gap-2" do |form| %>
+    <div class="relative">
+      <label class="border-gray border px-4 py-2 rounded-lg shadow-sm cursor-pointer hover:bg-gray-50 inline-flex items-center">
+          <span>Upload CSV</span>
+          <span class="ml-2 text-sm text-gray-500"></span>
+          <span class="sr-only">
+            <%= form.file_field :file, 
+                accept: ".csv",
+                onchange: "this.parentElement.previousElementSibling.textContent = this.files[0].name" %>
+          </span>
+      </label>
+    </div>
+    <%= form.submit "Import Users", class: "rounded-lg shadow-sm bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white cursor-pointer"%>
+  <% end %>
+</div>

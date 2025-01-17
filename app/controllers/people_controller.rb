@@ -2,6 +2,11 @@ class PeopleController < ApplicationController
   def index
     @people = Person.all
 
+    if params[:search].present?
+      word = params[:search].downcase
+      @people = Person.where("LOWER(first_name) LIKE :search OR LOWER(last_name) LIKE :search", search: word)
+    end
+
     if params[:sort].present?
       direction = params[:direction] == "asc" ? "desc" : "asc"
       @people = case params[:sort]
@@ -27,8 +32,13 @@ class PeopleController < ApplicationController
 
       # Name
       name = row["Name"]&.split(" ")
-      new_person.first_name = name[0]
-      new_person.last_name = name[1]
+      if name.count > 2
+        new_person.first_name = "#{name[0]} #{name[1]}"
+        new_person.last_name = name[2]
+      else
+        new_person.first_name = name[0]
+        new_person.last_name = name[1]
+      end
 
       # Location/s
       if row["Location"].include?(",") # Person has multiple locations
