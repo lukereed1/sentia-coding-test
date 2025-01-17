@@ -18,6 +18,8 @@ class PeopleController < ApplicationController
         Person.order("#{params[:sort]} #{direction}")
       end
     end
+
+    @people = @people.paginate(page: params[:page], per_page: 10)
   end
 
   def import

@@ -7,6 +7,7 @@
 
   <% if @people.exists? %>
     <%= render "table" %>
+    <%= render "paginate" %>
   <% else %>
     <h2 class="text-3xl text-center">Import some users...</h2>
   <% end %>
